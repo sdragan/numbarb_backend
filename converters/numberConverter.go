@@ -62,11 +62,11 @@ func threeDigitNumberToWords(number int, groupName string, thereIsPrevious bool)
 	}
 	result := ""
 
-	sotni := hundredsToText(number)
-	des := tensToText(number)
-	edin := figureToText(number)
+	hundreds := hundredsToText(number)
+	tens := tensToText(number)
+	figures := figureToText(number)
 
-	result = concatParts(sotni, des, edin, groupName, thereIsPrevious)
+	result = concatParts(hundreds, tens, figures, groupName, thereIsPrevious)
 
 	return result
 }
@@ -98,23 +98,22 @@ func figureToText(number int) string {
 	return ""
 }
 
-func concatParts(sotni, des, edin, groupName string, thereIsPrevious bool) string {
+func concatParts(hundreds, tens, figures, groupName string, thereIsPrevious bool) string {
 	result := ""
 	if thereIsPrevious {
 		result += " "
-		if sotni == "" && (des != "" || edin != "") {
+		if hundreds == "" && (tens != "" || figures != "") {
 			result += "and "
 		}
 	}
 
-	result += sotni + " "
-	if sotni != "" && des == "" && edin != "" {
+	result += hundreds + " "
+	if hundreds != "" && tens == "" && figures != "" {
 		result += "and "
 	}
 
-	result += des + " "
-	result += edin + " "
-
+	result += tens + " "
+	result += figures + " "
 	result += groupName + " "
 
 	return result
