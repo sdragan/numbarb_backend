@@ -2,7 +2,7 @@ package converters
 
 import "testing"
 
-func TestFoo(t *testing.T) {
+func TestConvertIntegerToWords(t *testing.T) {
 	initMap()
 	cases := []struct {
 		number         int
@@ -24,9 +24,9 @@ func TestFoo(t *testing.T) {
 	}
 
 	for _, currentCase := range cases {
-		result := doFullNumber(currentCase.number)
+		result := ConvertIntegerToWords(currentCase.number)
 		if result != currentCase.expectedResult {
-			t.Errorf("Result was incorrect, got: %s, want: %s.", result, currentCase.expectedResult)
+			t.Errorf("Result was incorrect, got: %s, expected: %s.", result, currentCase.expectedResult)
 		}
 	}
 }
